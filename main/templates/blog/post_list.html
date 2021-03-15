@@ -1,0 +1,130 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Home {% endblock %}
+<link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
+{% block content %}
+<style>
+  .card-img-top{
+    -webkit-transition: width 1s, height 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s;
+  }
+  .card-img-top:hover{
+    width: 350px;
+  
+  }
+</style>
+<br>
+<br>
+<br>
+
+<br>
+<div id="changing" class="jumbotron" >
+  <div class="container">
+    <h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;width: 100%;" id="welcome" class="">Welcome</h1>
+    <p style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">News, Entertainment, Health, Sports, Facts, Lifestyle, Food, Science and yes... Technology!</p>
+  </div>
+</div>
+<br>
+
+
+
+  <div class="album py-5 bg-light">  
+ <div class="container">
+<div class="row" style="font-size: xx-small;">
+  
+    {% for post in post_list %}
+    
+    <div id="card" class="col-md-4" style="font-size: xx-small;">
+        <div class="thumbnail">
+        <div class="card box-shadow" style="font-size: xx-small;;" >
+            {% if post.image %}
+                <div class="card mb-4 box-shadow" class="" style="overflow: hidden;">
+                    <a href="{% url 'post_detail' pk=post.pk %}"><img class="card-img-top img-responsive" src="{{ post.image.url }}" alt="Image not found"></a>
+                    </a>
+                </div>
+            {% endif %}
+            
+            <div class="card-body">
+                <div class="card-title">
+                    
+                    <h2><a style="font-size: large; color: black;" href="{% url 'post_detail' pk=post.pk %}">{{post.title|truncatechars:50}}</a></h2>
+                </div>
+
+                <a style="color: red;font-size: large;" href="{% url 'post_detail' pk=post.pk %}">{{ post.category }}</a>
+                
+                
+                  
+                <div class="card-date">
+                    <p style="font-size: small;"> <span style="color: blue;font-size: large;">Published on: </span> {{ post.published_date }}</p>
+                </div>
+                <a href="{% url 'post_detail' pk=post.pk %}"><span class=" font-weight" style="font-size: medium;">Comments: {{ post.comments.count }}</span></a>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary btn-md">Read more</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+  </div>
+</div>
+</div>
+
+
+{% if is_paginated %}
+<ul class="pagination">
+  {% if page_obj.has_previous %} <br>
+    <li>
+      <span><a class="btn btn-md btn-primary btn-block" href="?page={{ page_obj.previous_page_number }}"> << Previous </a></span>
+    </li>
+  {% endif %} <br>
+    <li>
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+  {% if page_obj.has_next %}
+  <li> 
+    <span><a class="btn btn-md btn-primary btn-block" href="?page={{ page_obj.next_page_number }}">>>Next</a></span>
+  </li>
+  {% endif %} <br>
+</ul>
+{% else %} <br>
+<p></p>
+{% endif %}
+
+
+
+  
+</div>
+
+<script>
+  var ass = document.getElementById("welcome")
+  var as = document.getElementById("changing")
+welcome.style.color = 'red'
+
+function getRandomColor(){
+    var letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var color = "#";
+    for (var i = 0; i < 6; i++){
+        color += letters[Math.floor(Math.random()*16)];
+    }
+    return color
+}
+
+function changeHeader(){
+    colorInput = getRandomColor()
+    welcome.style.color = colorInput;
+    changing.style.color = colorInput;
+    ass.style.color = colorInput;
+}
+
+setInterval("changeHeader()",500);
+
+</script>
+<script>
+  window.sr = ScrollReveal();
+sr.reveal('#card', {
+  duration: 2000,
+  origin: 'bottom'
+});
+</script>
+{% endblock %}

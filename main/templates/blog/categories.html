@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
+{% block title %} 9jaBased | Categories {% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<style>
+    .card-img-top{
+      -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
+      transition: width 2s, height 4s;
+    }
+    .card-img-top:hover{
+      width: 350px;
+    }
+  </style>
+{% if category_posts %}
+
+
+<br>
+<h1 style="text-align: center;">{{ cats }}</h1>
+<br>
+<div class="album py-5 bg-light">  
+<div class="container">
+    <div class="row" style="font-size: xx-small;">
+{% for post in category_posts %}
+
+<div class="col-md-4" style="font-size: xx-small;">
+    <div class="thumbnail">
+    <div class="card box-shadow" style="font-size: xx-small;" >
+        {% if post.image %}
+            <div class="view overlay" class="" style="overflow: hidden;">
+                <a href="{% url 'post_detail' pk=post.pk %}"><img class="card-img-top img-responsive"  src="{{ post.image.url }}" alt="Image not found"></a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+        {% endif %}
+        
+        <div class="card-body">
+            <div class="card-title">
+                
+                <h2><a style="font-size: xlarge; color: black;" href="{% url 'post_detail' pk=post.pk %}">{{post.title|truncatechars:50}}</a></h2>
+            </div>
+
+            
+            
+            
+              
+            <div class="card-date">
+                <p> <span style="color: blue;">Published on: </span> {{ post.published_date }}</p>
+            </div>
+            <a href="{% url 'post_detail' pk=post.pk %}"><span class=" font-weight-bold">Comments: {{ post.approve_comments.count }}</span></a>
+            <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary btn-md">Read more</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endfor %}
+</div>
+</div>
+</div>
+<br><br>
+
+
+
+</div>
+{% else %}
+<h2>Oops, Page not found.....</h2>
+{% endif %}
+
+{% endblock %}

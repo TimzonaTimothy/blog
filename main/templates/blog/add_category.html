@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block title %} Add New Category{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% if user.is_superuser %}
+    <p>New Category</p>
+    <form class="form-post" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="save btn btn-primary" type="submit" name="button">Save</button>
+    </form>
+
+    
+
+    <script>var editor = new MediumEditor('.editable');</script>
+{% else %}
+{% endif %}
+{% endblock %}

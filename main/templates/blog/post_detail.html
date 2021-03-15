@@ -1,0 +1,113 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Post Detail {% endblock %}
+<link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
+{% block content %}
+<br>
+
+<br>
+<br>
+
+    
+
+<div class="bg-light">
+  
+  
+<div  style="margin: 10px 50px 10px 50px;">
+<br>
+<div class="">
+<h1 class="title" style="font-size: larger;font-weight: bold; color: black;font-family: Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif;">{{ post.title }}</h1>
+
+    <p>Posted by <strong style="color: blue;font-weight: bold;">9jaBased</strong></p>
+    {% if post.published_date %}
+        <div class="date postdate"></div>
+            <p>Published on <span style="color: blue;font-weight: bold;">{{ post.published_date }}</span></p>
+        </div>
+    {% else %}
+      {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+      {% endif %}  
+    {% endif %}
+{% if post.image %}
+<div style="text-align: center;" class="thumbnail">
+    <div class="view overlay"></div><img src="{{ post.image.url }}" class="img-fluid"  alt=""/>
+</div>
+{% endif %}
+<div class="container">
+    <br>
+    <p style="background-color: cadetblue;color: white;">{{ post.text|safe|linebreaksbr}}</p>
+</div>    
+
+    {% if user.is_superuser %}
+        <a class="btn btn-primary"  href="{% url 'post_edit' pk=post.pk %}">
+            <span class="glyphicon glyphicon-pencil">Edit</span>
+        </a>
+        <a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}">
+            <span class="glyphicon glyphicon-remove">Delete</span>
+        </a>
+    {% endif %}
+
+    
+    
+    <div class="">
+        {% for comment in post.comments.all %}
+        <br>
+                <p class="" ><br> <span style="color: blue;font-weight: bold;">posted by: <span style="color: red;font-weight: bold;font-family: Georgia, 'Times New Roman', Times, serif;">{{ comment.name }}</span><br> <span style="color: blue;font-weight: bold;">{{ comment.created_date }}</span>{{ comment.text|safe|linebreaks }}<hr></span></p>
+                
+            {% empty %}
+            <p>No Comments</p>
+        {% endfor %}
+    </div><br>
+    {% if user.is_superuser or user.is_authenticated %}
+    <a class="btn btn-sm btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
+    {% else %}
+    <a class="btn btn-sm btn-primary btn-comment" href="{% url 'members:login' %}">Add Comment</a>
+    {% endif %}
+    <p>Share on</p>
+    <!-- <button class="btn btn-primary">Facebook<a style="color: white;" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+      <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+    </svg></a></button>
+     <button style="background-color: rgb(0, 46, 250);" class="btn btn-primary">Twitter<a style="color: white;" href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20{{ request.build_absolute_url }}"></a></button> -->
+     
+  
+  <div style="font-size:xx-large;" class="share-btn-container">
+    <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_url }}" class="facebook-btn">
+      <i style="color: #3b5998;" class="fab fa-facebook"></i>
+    </a>
+    
+    <a class="twitter-btn" href="https://twitter.com/share?url={{ request.build_absolute_url }}&text={{ post.title }}&via=[via]&hashtags=[hashtags]">
+      <i style="color: #1da1f2;" class="fab fa-twitter"></i>
+    </a>
+
+    <a class="pinterest-btn" href="https://pinterest.com/pin/create/bookmarklet/?media={{ post.image.url }}&url={{ request.build_absolute_url }}&is_video=[is_video]&description={{ post.title }}">
+      <i style="color: #bd081c;" class="fab fa-pinterest"></i>
+    </a>
+
+    <a class="linked-btn" href="https://www.linkedin.com/shareArticle?url={{ request.build_absolute_url }}&title={{ post.title }}">
+      <i style="color: #0077b5;" class="fab fa-linkedin"></i>
+    </a>
+
+    <a class="whatsapp-btn" href="https://wa.me/?text={{ post.title }} {{ request.build_absolute_url }}">
+      <i style="color: #25d366;" class="fab fa-whatsapp"></i>
+    </a>
+</div>
+</div>
+  </div>
+
+</div>
+
+
+<div class="row">
+    <div class="">
+      
+    </div>
+    
+    <div>
+      <div>
+      
+        
+
+    
+    </div>
+  </div>
+{% endblock %} 

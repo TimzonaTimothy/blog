@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Confirm Delete {% endblock %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <strong><p>Are you sure you want to delete? <br></strong>{{ object }}</p>
+        <input type="submit" class="btn btn-danger" value="Confirm">
+    </form>
+
+{% endblock %}

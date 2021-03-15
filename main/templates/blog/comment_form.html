@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Comment {% endblock %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <h1 style="text-align: center;">Post Comment</h1>
+    
+    
+    <form class="post-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <br>
+        
+        <button class="save btn btn-primary" type="submit">Post Comment</button>
+    </form>
+
+    <script>var editor = new MediumEditor('.editable');</script>
+    
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Draft {% endblock %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    {% for post in posts %}
+    <div class="post">
+        <p class="date">Created: {{ post.created_date|date }}</p>
+        <a href="{% url 'admin:post_detail' pk=post.pk %}"><img class="card-img-top" src="{{ post.image.url }}" alt="Image not found"></a>
+        <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+        <h1><a href="{% url 'admin:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text|truncatechars:200}}</p>
+    </div>
+    {% endfor %}
+
+{% endblock %}

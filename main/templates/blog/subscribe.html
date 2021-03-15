@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Newsletter {% endblock %}
+<link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+<form method="POST" style="background-color: black; text-align: center; padding: 10px; ">
+{% if messages %}
+    {% for message in messages %}
+        <div {% if message.tags %} class="{{message.tags}}" {% endif %} role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% else %}
+    {% csrf_token %}
+      <div  class=" widget-wrap ">
+          <label>
+              <h1 style="color: white;">Subscribe to our newsletter</h1>
+              {{ form }}
+              <br>
+              <button type="submit" class="btn btn-lg btn-primary" style="background-color: orangered;" >Subscribe</button>
+          </label>
+      </div>
+  </form>
+  {% endif %}
+  <!-- <div>
+    <button type="submit"  style="background-color: orangered;padding:0px 0px 0px 20px;float:right;font-size: xx-small;" >
+      <a style="color: white;background-color: black;" href="{% url 'unsub' %}">Unsubscribe</a>
+    </button>
+    <br>
+  </div> -->
+
+
+  {% endblock %}

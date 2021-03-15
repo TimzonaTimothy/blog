@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %} {% load static %} {% block title %} 9jaBased |
+Login {% endblock %} 
+<link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+<link
+  rel="canonical"
+  href="https://getbootstrap.com/docs/4.5/examples/sign-in/"
+/>
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="signin.css" rel="stylesheet" />
+{% block content %}
+<br />
+<br><br>
+<div class="row" style="text-align: center; padding: 10%">
+  <div class="form-group">
+    <div class="">
+      <h2
+        class=""
+        style="
+          text-align: center;
+          font-size: xx-large;
+          padding: 6px 6px 10px 6px;
+          font-size: xlarger;
+          font-weight: bold;
+          background-color: rgba(8, 86, 255, 0.986);
+          color: white;
+        "
+      >
+        Login
+      </h2>
+    </div>
+    <br />
+
+    <form class="form-" method="POST">
+      {% csrf_token %}
+
+      <div class="form-signin">
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input style="border-radius: 30px;"
+          type="text"
+          id="username"
+          class="form-control"
+          name="username"
+          placeholder="Username"
+          required='required'
+          autofocus=""
+        /> <br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input style="border-radius: 30px;"
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          required='required'
+        />
+
+        <div class=""></div>
+        <br />
+        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+        <a href="{% url 'members:reset_password' %}">Forget Password?</a
+        ><br /><br />
+        <label>
+          <a href="{% url 'members:register' %}">Create an account</a>
+        </label>
+      </div>
+      <div class="alert" style="color: red;">
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

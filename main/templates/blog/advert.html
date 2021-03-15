@@ -1,0 +1,82 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block title %}9jaBased{% endblock %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+
+<div id="contact" class="contact-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header center">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="">
+                <form id="contact-form" method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="messages"></div>
+                    <div class="controls">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                                    <input id="form-name" name="massage_name" class="form-control" placeholder="Enter your full name" required='required' data-error='Fullname is required.' type="text">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                                    <input id="form-email" name="email" class="form-control" placeholder="Enter your email" required='required' data-error='Fullname is required.' type="text">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                                <textarea name="massage" id="form-message" class="form-control" placeholder="Your Message" required="required"  data-error="Please leave a message"  rows="10"></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn btn-outline-success my-2 my-sm-0">Send message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

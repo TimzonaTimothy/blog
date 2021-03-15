@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}9jaBased | Newsletter {% endblock %}
+<link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+<form method="POST" style="background-color: black; text-align: center; padding: 10px; ">
+{% if messages %}
+    {% for message in messages %}
+        <div {% if message.tags %} class="{{message.tags}}" {% endif %} role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% else %}
+    {% csrf_token %}
+      <div  class=" widget-wrap ">
+          <label>
+              <h1 style="color: white;">Unsubscribe to our newsletter</h1>
+              {{ form }}
+              <br>
+              <button type="submit" class="btn btn-lg btn-primary" style="background-color: orangered;" >Unubscribe</button>
+          </label>
+      </div>
+  </form>
+  {% endif %}
+
+  {% endblock %}

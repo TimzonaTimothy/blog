@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %} 9jaBased | Profile {% endblock %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<h1>User Profile</h1>
+
+
+<div class="content-section">
+    <div style="text-align: center;" class="media">
+        <img style="font-size: larger;" class="rounded-circle account-img" src="{{request.user.userprofileinfo.profile_picture.url}}" style="width: 353px;" alt="">
+        <div class="media-body">
+            <form style="font-size: medium;" class="form-post" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

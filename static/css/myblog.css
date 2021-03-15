@@ -1,0 +1,22 @@
+.zona{
+    color: green;
+}
+body{
+    background-color:rgba(184, 222, 240, 0.993);
+
+}
+
+
+
+.title{
+    text-align: center;
+    padding: 20px;
+}
+
+.formbase{
+    background-color: firebrick;
+}
+
+.container-fluid{
+    text-align: center;
+}
