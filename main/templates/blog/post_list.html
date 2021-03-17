@@ -4,14 +4,25 @@
 <link rel="stylesheet" href="{% static "css/myblog.css" %}"/>
 {% block content %}
 <style>
+
+.show{
+  overflow: hidden;
+}
+.show img{
+  transition: all 1.5s ease;
+}
+.show:hover img{
+  transform: scale(1.2);
+}
+  /*
   .card-img-top{
-    -webkit-transition: width 1s, height 1s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: width 1s, height 1s;
     transition: width 1s, height 1s;
   }
   .card-img-top:hover{
     width: 350px;
-  
   }
+  */
 </style>
 <br>
 <br>
@@ -21,7 +32,7 @@
 <div id="changing" class="jumbotron" >
   <div class="container">
     <h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;width: 100%;" id="welcome" class="">Welcome</h1>
-    <p style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">News, Entertainment, Health, Sports, Facts, Lifestyle, Food, Science and yes... Technology!</p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">News, Entertainment, Health, Sports, Facts, Science and yes... Technology!</p>
   </div>
 </div>
 <br>
@@ -36,12 +47,15 @@
     
     <div id="card" class="col-md-4" style="font-size: xx-small;">
         <div class="thumbnail">
-        <div class="card box-shadow" style="font-size: xx-small;;" >
+        <div class="card shadow" style="font-size: xx-small;;" >
             {% if post.image %}
-                <div class="card mb-4 box-shadow" class="" style="overflow: hidden;">
+            
+                <div class="card mb-4 box-shadow " class="" style="overflow: hidden;">
+                  <div class="show">
                     <a href="{% url 'post_detail' pk=post.pk %}"><img class="card-img-top img-responsive" src="{{ post.image.url }}" alt="Image not found"></a>
                     </a>
                 </div>
+              </div>
             {% endif %}
             
             <div class="card-body">
