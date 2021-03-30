@@ -10,6 +10,7 @@
 <br>
 
 <form method="POST" style="background-color: black; text-align: center; padding: 10px; ">
+    {% csrf_token %}
 {% if messages %}
     {% for message in messages %}
         <div {% if message.tags %} class="{{message.tags}}" {% endif %} role="alert">
@@ -18,7 +19,7 @@
         </div>
     {% endfor %}
 {% else %}
-    {% csrf_token %}
+    
       <div  class=" widget-wrap ">
           <label>
               <h1 style="color: white;">Subscribe to our newsletter</h1>

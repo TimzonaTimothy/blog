@@ -66,13 +66,13 @@
 <body>
     <!-- navbar -->
     
-    <nav id="navbar" class="navbar navbar-expand-md navbar-dark fixed-top" style="font-size:larger;background-color: rgb(22, 81, 148);">
+    <nav id="navbar" class="navbar navbar-expand-md navbar-dark fixed-top" style="font-size:large;background-color: rgb(22, 81, 148);">
       <header class="blog-header py-3">
       </header>
         <div class="container-fluid ">
           <div  style="text-align: center;" class="blog-header py-3">
               <div class="col-4 text-center">
-              <a id="kill" class="navbar-brand " style="font-weight: bolder;" href="{% url 'post_list'%}">9ja<span class="zona" style="color: lime;">Based</span></a>
+              <a id="kill" class="navbar-brand " style="font-weight: bolder;font-style: italic;" href="{% url 'post_list'%}">9ja<span class="zona" style="color: lime;">Based</span></a>
             </div>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,15 +142,15 @@
 
       
       <!-- content-block -->
-    <div class="">
-        <div class="">
-                <div class="container">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-        </div>
+  
+        
+           <div class="container">
+              {% block content %}
+              {% endblock %}
+          </div>
+        
 
-    </div>
+
 
     <br>
     
@@ -169,51 +169,92 @@
 
       <br>
       <div class="d">
-        <div class="footer" style="background-color: black;">
+        <div class="footer" style="background-color: black;padding-top: 10px;">
           <div>
-            <button type="submit"  style="background-color: orangered;padding:0px 0px 0px 40px;border-radius: 20px;" >
-              <a style="color: white;background-color: black;border-radius: 20px;" class="btn btn-lg btn-primary wow fadeInLeft" data-wow-delay="0.2s" href="{% url 'subscribe' %}">Subscribe</a>
-            </button>
-            
-          </div>
+           
 
-            <button type="submit"  style="background-color: orangered;padding:0px 0px 0px 40px;border-radius: 20px;" >
-              <a style="color: white;background-color: black;border-radius: 20px;" class="btn btn-lg btn-primary wow fadeInLeft" data-wow-delay="0.2s" href="{% url 'advert' %}">Contacts Us</a>
-            </button><br><br>
-
-<div class="container" style="align-items: center;">
-    <div class="row mb-3">
-      <div class="col-4 themed-grid-col">
-        <h5>
-          <div style="font-size:xx-large;" class="share-btn-container">
-            <a href="https://www.facebook.com" class="facebook-btn">
-              <i style="color: #3b5998;" class="fab fa-facebook"></i>
-            </a>
-        </h5>
-
-      </div>
-      <div class="col-4 themed-grid-col">
-        <h5>
-          <div style="font-size:xx-large;" class="share-btn-container">
-            <a href="https://www.twitter.com" class="twitter-btn">
-              <i style="color: #1da1f2;" class="fab fa-twitter"></i>
-            </a>
-        </h5>
-
-      </div>
-      <div class="col-4 themed-grid-col">
-        <h5>
-          <div style="font-size:xx-large;" class="share-btn-container">
-            <a href="https://www.instagram.com" class="instagram-btn">
-              <i style="color: #e25dba;" class="fab fa-instagram"></i>
-            </a>
-        </h5>
-      </div>
-
+<div class="row">
+  <div class="col-6 col-lg-2">
+    <div class="single-footer">
+        <ul>
+            <li><button type="submit"  style="background-color: orangered;padding:0px 0px 0px 40px;border-radius: 20px;font-size: ;" >
+              <a style="color: white;background-color: black;border-radius: 20px;" class="btn btn-sm btn-primary wow fadeInLeft" data-wow-delay="0.2s" href="{% url 'advert' %}">Contacts</a>
+              </button>
+            </li>
+        </ul>
     </div>
+</div>
+<div class="col-6 col-lg-2">
+    <div class="single-footer">
+        <ul>
+            <li><button type="submit"  style="background-color: orangered;padding:0px 0px 0px 40px;border-radius: 20px;" >
+              <a style="color: white;background-color: black;border-radius: 20px;" class="btn btn-sm btn-primary wow fadeInLeft" data-wow-delay="0.2s" href="{% url 'subscribe' %}">Subscribe</a>
+            </button></li>
+        </ul>
+    </div>
+</div>
+<div class="col-6 col-lg-2">
+  <div class="single-footer">
+      <ul>
+          <li>
+            <h5>
+              <div style="font-size:xx-large;" class="share-btn-container">
+                <a href="https://www.twitter.com" class="twitter-btn">
+                  <i style="color: #1da1f2;" class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </h5>
+          </li>
+      </ul>
   </div>
-
-            <div class="container" >
+</div>
+<div class="col-6 col-lg-2">
+  <div class="single-footer">
+      <ul>
+          <li>
+            <h5>
+              <div style="font-size:xx-large;" class="share-btn-container">
+                <a href="https://www.facebook.com" class="facebook-btn">
+                  <i style="color: #3b5998;" class="fab fa-facebook"></i>
+                </a>
+              </div>
+            </h5>
+          </li>
+      </ul>
+  </div>
+</div>
+<div class="col-6 col-lg-2">
+  <div class="single-footer">
+      <ul>
+          <li>
+            <h5>
+            <div style="font-size:xx-large;" class="share-btn-container">
+              <a href="https://www.instagram.com" class="instagram-btn">
+                <i style="color: #e25dba;" class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </h5>
+          </li>
+      </ul>
+  </div>
+</div>
+<div class="col-6 col-lg-2">
+  <div class="single-footer">
+      <ul>
+          <li>
+            <h5>
+            <div style="font-size:xx-large;" class="share-btn-container">
+              <a href="https://www.linkedin.com" class="linkedin-btn">
+                <i style="color: #0077b5;" class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </h5>
+          </li>
+      </ul>
+  </div>
+</div>
+            
+            <div class="container" style="align-items: center;">
             <span class="text-muted text-center"><p>9ja<span class="zona">Based</span>, Copyright &copy; 2021</p></span>
           </div>
           </div>
@@ -244,16 +285,7 @@
 <script>window.jQuery || document.write('<script src="/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
 <script src="/docs/4.0/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/docs/4.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.0/assets/js/docs.min.js"></script>
-<script>
-    window.sr = ScrollReveal();
-    sr.reveal('.navbar', {
-    duration: 2000,
-    origin: 'bottom'
-  });
-  sr.reveal('.footer', {
-    duration: 2000,
-    origin: 'bottom'
-  });
+
 </script>
 </body>
 </html>

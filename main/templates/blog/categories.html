@@ -8,13 +8,15 @@
 <br>
 <br>
 <style>
-    .card-img-top{
-      -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
-      transition: width 2s, height 4s;
-    }
-    .card-img-top:hover{
-      width: 350px;
-    }
+.show{
+  overflow: hidden;
+}
+.show img{
+  transition: all 1.5s ease;
+}
+.show:hover img{
+  transform: scale(1.2);
+}
   </style>
 {% if category_posts %}
 
@@ -27,11 +29,11 @@
     <div class="row" style="font-size: xx-small;">
 {% for post in category_posts %}
 
-<div class="col-md-4" style="font-size: xx-small;">
+<div class="col-md-4" style="font-size: xx-small;margin-top: 10px;">
     <div class="thumbnail">
     <div class="card box-shadow" style="font-size: xx-small;" >
         {% if post.image %}
-            <div class="view overlay" class="" style="overflow: hidden;">
+            <div class="show" class="" style="overflow: hidden;">
                 <a href="{% url 'post_detail' pk=post.pk %}"><img class="card-img-top img-responsive"  src="{{ post.image.url }}" alt="Image not found"></a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
