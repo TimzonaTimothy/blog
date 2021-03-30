@@ -136,7 +136,7 @@ def post_publish(request,pk):
 class UpdatePostView(LoginRequiredMixin,UpdateView):
     login_url = '/login/'
     redirect_field_name = 'blog/post_detail.html'
-
+    template_name = 'blog/post_form.html'
     form_class = PostForm
 
     model = Post
@@ -146,6 +146,7 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
+    template_name = 'blog/post_confirm_delete.html'
     success_url = reverse_lazy('post_list')
 
 def CategoryView(request,cats):
